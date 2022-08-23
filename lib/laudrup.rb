@@ -7,6 +7,7 @@ require_relative 'laudrup/version'
 
 require_relative 'laudrup/operations/add'
 require_relative 'laudrup/operations/subtract'
+require_relative 'laudrup/operations/multiply'
 
 module Laudrup
   class Error < StandardError; end
