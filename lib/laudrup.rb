@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-require "active_model"
-require "u-case/with_activemodel_validation"
+require 'active_model'
+require 'u-case/with_activemodel_validation'
 
 require_relative 'laudrup/version'
 
