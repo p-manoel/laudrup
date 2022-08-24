@@ -10,6 +10,8 @@ require_relative 'laudrup/operations/subtract'
 require_relative 'laudrup/operations/multiply'
 require_relative 'laudrup/operations/divide'
 
+require_relative 'laudrup/output_methods/console'
+
 module Laudrup
   class Error < StandardError; end
   # Your code goes here...
