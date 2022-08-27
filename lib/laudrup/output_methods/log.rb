@@ -21,7 +21,7 @@ module Laudrup
 
         operation_details = "#{operation_arguments_with_operator} = #{operation_result}"
         
-        logger = Logger.new('logfile.log')
+        logger = Logger.new('operations.log')
         logger.info(operation_details)
 
         Success :writed_on_logfile, result: { operation_details: operation_details } 

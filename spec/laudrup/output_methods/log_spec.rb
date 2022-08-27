@@ -191,7 +191,7 @@ RSpec.describe Laudrup::OutputMethods::Log do
         operation_arguments_with_operator = valid_operation_input.join(" #{OPERATORS.fetch(random_valid_operation)} ")
         expected_operation_details = "#{operation_arguments_with_operator} = #{valid_operation_result}"
 
-        last_line_of_logfile = IO.readlines('logfile.log', chomp: true).last
+        last_line_of_logfile = IO.readlines('operations.log', chomp: true).last
 
         # Then
         expect(last_line_of_logfile).to include(expected_operation_details)
