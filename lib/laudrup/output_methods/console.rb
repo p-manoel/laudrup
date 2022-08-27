@@ -19,9 +19,9 @@ module Laudrup
 
         operation_details = "#{operation_arguments_with_operator} = #{operation_result}"
         
-        puts operation_details
+        p operation_details
 
-        Success :printed, result: { operation_details: operation_details } 
+        Success :printed, result: { operation_details: operation_details }
       end
     end
   end

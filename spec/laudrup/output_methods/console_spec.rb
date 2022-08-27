@@ -182,21 +182,15 @@ RSpec.describe Laudrup::OutputMethods::Console do
         }
   
         # When
-        console_result = described_class.call(
-          operation: random_valid_operation,
-          operation_input: valid_operation_input,
-          operation_result: valid_operation_result
-        )
-        
         operation_arguments_with_operator = valid_operation_input.join(" #{OPERATORS.fetch(random_valid_operation)} ")
         expected_operation_details = "#{operation_arguments_with_operator} = #{valid_operation_result}"
 
         # Then
-        expect(console_result).to have_attributes(
-          data: {
-            operation_details: expected_operation_details
-          }
-        )
+        expect { described_class.call(
+          operation: random_valid_operation,
+          operation_input: valid_operation_input,
+          operation_result: valid_operation_result
+        ) }.to output("\"#{expected_operation_details}\"\n").to_stdout
       end
     end
   end
