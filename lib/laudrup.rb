@@ -11,6 +11,7 @@ require_relative 'laudrup/operations/multiply'
 require_relative 'laudrup/operations/divide'
 
 require_relative 'laudrup/output_methods/console'
+require_relative 'laudrup/output_methods/log'
 
 module Laudrup
   class Error < StandardError; end
