@@ -12,6 +12,7 @@ require_relative 'laudrup/operations/divide'
 
 require_relative 'laudrup/output_methods/console'
 require_relative 'laudrup/output_methods/log'
+require_relative 'laudrup/output_methods/json'
 
 module Laudrup
   class Error < StandardError; end
