@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 RSpec.describe Laudrup::OutputMethods::Log do
   describe 'failures' do
     context 'with invalid operation argument' do
       it 'returns a failure' do
         # Given
-        invalid_operation_argument = [nil, "a", 3].sample
+        invalid_operation_argument = [nil, 'a', 3].sample
 
         # When
         console_result = described_class.call(
@@ -21,7 +23,7 @@ RSpec.describe Laudrup::OutputMethods::Log do
 
       it 'exposes an error' do
         # Given
-        invalid_operation_argument = [nil, "a", 3].sample
+        invalid_operation_argument = [nil, 'a', 3].sample
 
         # When
         console_result = described_class.call(
@@ -46,7 +48,7 @@ RSpec.describe Laudrup::OutputMethods::Log do
           Laudrup::Operations::Multiply,
           Laudrup::Operations::Divide
         ].sample
-        invalid_operation_input = [nil, "a", 3].sample
+        invalid_operation_input = [nil, 'a', 3].sample
 
         # When
         console_result = described_class.call(
@@ -70,7 +72,7 @@ RSpec.describe Laudrup::OutputMethods::Log do
           Laudrup::Operations::Multiply,
           Laudrup::Operations::Divide
         ].sample
-        invalid_operation_input = [nil, "a", 3].sample
+        invalid_operation_input = [nil, 'a', 3].sample
 
         # When
         console_result = described_class.call(
@@ -95,7 +97,7 @@ RSpec.describe Laudrup::OutputMethods::Log do
           Laudrup::Operations::Multiply,
           Laudrup::Operations::Divide
         ].sample
-        invalid_operation_result = ["1", nil, :b].sample
+        invalid_operation_result = ['1', nil, :b].sample
 
         # When
         console_result = described_class.call(
@@ -119,7 +121,7 @@ RSpec.describe Laudrup::OutputMethods::Log do
           Laudrup::Operations::Multiply,
           Laudrup::Operations::Divide
         ].sample
-        invalid_operation_result = ["1", nil, :b].sample
+        invalid_operation_result = ['1', nil, :b].sample
 
         # When
         console_result = described_class.call(
@@ -148,14 +150,14 @@ RSpec.describe Laudrup::OutputMethods::Log do
         ].sample
         valid_operation_input = [[1, 2, 3], [1, '2', 3], [1, 2, 3.0]].sample
         valid_operation_result = 6
-  
+
         # When
         log_result = described_class.call(
           operation: random_valid_operation,
           operation_input: valid_operation_input,
           operation_result: valid_operation_result
         )
-  
+
         # Then
         expect(log_result).to have_attributes(
           success?: true,
@@ -174,21 +176,21 @@ RSpec.describe Laudrup::OutputMethods::Log do
         valid_operation_input = [[1, 2, 3], [1, '2', 3], [1, 2, 3.0]].sample
         valid_operation_result = 6
 
-        OPERATORS = {
+        operators = {
           Laudrup::Operations::Add => '+',
           Laudrup::Operations::Subtract => '-',
           Laudrup::Operations::Multiply => '*',
           Laudrup::Operations::Divide => '/'
-        }
-  
+        }.freeze
+
         # When
-        console_result = described_class.call(
+        described_class.call(
           operation: random_valid_operation,
           operation_input: valid_operation_input,
           operation_result: valid_operation_result
         )
-        
-        operation_arguments_with_operator = valid_operation_input.join(" #{OPERATORS.fetch(random_valid_operation)} ")
+
+        operation_arguments_with_operator = valid_operation_input.join(" #{operators.fetch(random_valid_operation)} ")
         expected_operation_details = "#{operation_arguments_with_operator} = #{valid_operation_result}"
 
         last_line_of_logfile = IO.readlines('operations.log', chomp: true).last

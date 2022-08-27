@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'logger'
 
 module Laudrup
@@ -12,7 +14,7 @@ module Laudrup
         Operations::Subtract => '-',
         Operations::Multiply => '*',
         Operations::Divide => '/'
-      }
+      }.freeze
 
       def call!
         operator = OPERATORS.fetch(operation)
@@ -20,11 +22,11 @@ module Laudrup
         operation_arguments_with_operator = operation_input.join(" #{operator} ")
 
         operation_details = "#{operation_arguments_with_operator} = #{operation_result}"
-        
+
         logger = Logger.new('operations.log')
         logger.info(operation_details)
 
-        Success :writed_on_logfile, result: { operation_details: operation_details } 
+        Success :writed_on_logfile, result: { operation_details: operation_details }
       end
     end
   end

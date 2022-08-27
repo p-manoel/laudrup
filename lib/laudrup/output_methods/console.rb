@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Laudrup
   module OutputMethods
     class Console < ::Micro::Case
@@ -10,7 +12,7 @@ module Laudrup
         Operations::Subtract => '-',
         Operations::Multiply => '*',
         Operations::Divide => '/'
-      }
+      }.freeze
 
       def call!
         operator = OPERATORS.fetch(operation)
@@ -18,7 +20,7 @@ module Laudrup
         operation_arguments_with_operator = operation_input.join(" #{operator} ")
 
         operation_details = "#{operation_arguments_with_operator} = #{operation_result}"
-        
+
         p operation_details
 
         Success :printed, result: { operation_details: operation_details }
