@@ -163,7 +163,7 @@ RSpec.describe Laudrup::OutputMethods::Console do
         )
       end
 
-      it 'returns a success' do
+      it 'prints the operation details on console' do
         # Given
         random_valid_operation = [
           Laudrup::Operations::Add,
